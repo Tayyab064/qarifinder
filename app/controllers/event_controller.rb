@@ -4,10 +4,10 @@ class EventController < ApplicationController
 
 	def event
 		c = Event.new(event_params)
-		if @user.class == 'User'
-			c.eventby_type = 'User'
-		else
+		if @user.class == 'Qari'
 			c.eventby_type = 'Qari'
+		else
+			c.eventby_type = 'User'
 		end
 		c.eventby_id = @user.id
 		if c.save

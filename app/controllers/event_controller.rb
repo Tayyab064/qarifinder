@@ -3,6 +3,8 @@ class EventController < ApplicationController
 	before_action :restrict_all , only: [:event]
 
 	def event
+		p 'User is'
+		p @user
 		c = Event.new(event_params)
 		if @user.class == 'Qari'
 			c.eventby_type = 'Qari'

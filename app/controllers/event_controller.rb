@@ -13,7 +13,7 @@ class EventController < ApplicationController
 		if c.save
 			render json: {'message' => 'Successfully created'} , status: 201
 		else
-			render json: {'message' => 'Something went wrong'} , status: 422
+			render json: {'message' => c.errors} , status: 422
 		end
 	end
 

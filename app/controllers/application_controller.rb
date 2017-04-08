@@ -41,8 +41,8 @@ class ApplicationController < ActionController::Base
 
   def restrict_access_qari
     authenticate_or_request_with_http_token do |token, _options|
-      if User.exists?(token: token)
-        @user = User.find_by_token(token)
+      if Qari.exists?(token: token)
+        @user = Qari.find_by_token(token)
       end
     end
   end

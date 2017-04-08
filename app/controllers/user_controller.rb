@@ -1,6 +1,6 @@
 class UserController < ApplicationController
 	skip_before_action :verify_authenticity_token
-	before_action :restrict_user , except: [:signup , :signin]
+	before_action :restrict_user , only: []
 
 
 	def signup
@@ -37,7 +37,7 @@ class UserController < ApplicationController
 		if params[:latitude].present? && params[:longitude].present?
 			@qari = Qari.near([params[:latitude], params[:longitude]], 10, :units => :km)
 		else
-			@qari = Qari.near([@current_user.latitude,@current_user.longitude], 10, :units => :km)
+			@qari = Qari.all
 		end
 		render status: 200
 	end
@@ -46,7 +46,7 @@ class UserController < ApplicationController
 		if params[:latitude].present? && params[:longitude].present?
 			@event = Event.near([params[:latitude], params[:longitude]], 10, :units => :km)
 		else
-			@event = Event.near([@current_user.latitude,@current_user.longitude], 10, :units => :km)
+			@event = Event.all
 		end
 		render status: 200
 	end

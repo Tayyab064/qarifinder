@@ -1,0 +1,2 @@
+module QariHelper
+end

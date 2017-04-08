@@ -8,6 +8,13 @@ Rails.application.routes.draw do
 	  	get 'events/nearby' => 'user#nearby_events'
 	  	get 'events' => 'user#events'
 	end
+
+	scope 'qari' do
+		post 'signup' => 'qari#signup'
+		post 'signin' => 'qari#signin'
+	end
+
+	post 'event' => 'event#event'
   end
 
 end

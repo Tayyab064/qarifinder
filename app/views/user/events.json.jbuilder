@@ -7,7 +7,7 @@ json.events(@event) do |event|
 	json.contact_number event.contact_number
 	json.latitude event.latitude
 	json.longitude event.longitude
-	user = event.user
+	user = event.eventby
 	json.user do
 		json.name user.name
 		json.address user.address

@@ -1,7 +1,7 @@
 json.events(@event) do |event|
 	json.id event.id
 	json.place event.place
-	json.timing event.timing
+	json.timing event.timing.strftime("%d %b,%Y  %I:%M %p")  
 	json.title event.title
 	json.orginazior event.orginazior
 	json.contact_number event.contact_number

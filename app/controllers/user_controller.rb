@@ -56,6 +56,18 @@ class UserController < ApplicationController
 		render status: 200
 	end
 
+	def upload_image
+		if params[:image].present?
+			@current_user.update(image: params[:image])
+			message = 'Profile pic updated'
+			sta = 200
+		else
+			message = 'Params missing'
+			sta = 422
+		end
+		render json: {'message' => message} , status: sta
+	end
+
 
 	private
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408111643) do
+ActiveRecord::Schema.define(version: 20170502142141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(version: 20170408111643) do
     t.string   "contact_number"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "eventby_type"
     t.integer  "eventby_id"
+    t.string   "description",    default: ""
   end
 
   create_table "qaris", force: :cascade do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170408111643) do
     t.datetime "updated_at",                         null: false
     t.float    "hourly_rate",          default: 0.0
     t.string   "awards",               default: ""
+    t.string   "image"
   end
 
   create_table "timeslots", force: :cascade do |t|
@@ -69,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170408111643) do
     t.float    "longitude"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.string   "image"
   end
 
 end

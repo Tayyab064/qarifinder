@@ -9,5 +9,10 @@ else
 		json.latitude @user.latitude
 		json.longitude @user.longitude
 		json.token @user.token
+		if @user.image_url.present?
+			json.image @user.image_url
+		else
+			json.image ''
+		end
 	end
 end

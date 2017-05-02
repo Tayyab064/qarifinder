@@ -9,5 +9,10 @@ else
 		json.latitude @qari.latitude
 		json.longitude @qari.longitude
 		json.token @qari.token
+		if @qari.image_url.present?
+			json.image @qari.image_url
+		else
+			json.image ''
+		end
 	end
 end

@@ -1,6 +1,6 @@
 class QariController < ApplicationController
 	skip_before_action :verify_authenticity_token
-	before_action :restrict_qari , only: []
+	before_action :restrict_qari , only: [ :upload_image]
 
 
 	def signup
@@ -33,9 +33,21 @@ class QariController < ApplicationController
 		end
 	end
 
+	def upload_image
+		if params[:image].present?
+			@current_qari.update(image: params[:image])
+			message = 'Profile pic updated'
+			sta = 200
+		else
+			message = 'Params missing'
+			sta = 422
+		end
+		render json: {'message' => message} , status: sta
+	end
+
 	private
 
 	def signu_params
-		params.require(:qari).permit(:name , :email , :password , :mobile_number , :dob , :gender , :qualification , :latitude , :longitude , :hourly_rate , :awards)
+		params.require(:qari).permit(:name , :email , :password , :mobile_number , :dob , :gender , :description , :qualification , :latitude , :longitude , :hourly_rate , :awards)
 	end
 end

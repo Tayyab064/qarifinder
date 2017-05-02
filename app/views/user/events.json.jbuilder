@@ -3,6 +3,7 @@ json.events(@event) do |event|
 	json.place event.place
 	json.timing event.timing.strftime("%d %b,%Y  %I:%M %p")  
 	json.title event.title
+	json.description event.description
 	json.orginazior event.orginazior
 	json.contact_number event.contact_number
 	json.latitude event.latitude

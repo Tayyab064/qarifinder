@@ -5,9 +5,14 @@ json.events(@event) do |event|
 	json.title event.title
 	json.orginazior event.orginazior
 	json.contact_number event.contact_number
+	if event.image_url.present?
+		json.image event.image_url
+	else
+		json.image ''
+	end
 	json.latitude event.latitude
 	json.longitude event.longitude
-	user = event.user
+	user = event.eventby
 	json.user do
 		json.name user.name
 		json.address user.address

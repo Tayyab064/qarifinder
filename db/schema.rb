@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502142141) do
+ActiveRecord::Schema.define(version: 20170516134227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170502142141) do
     t.string   "eventby_type"
     t.integer  "eventby_id"
     t.string   "description",    default: ""
+    t.string   "image"
   end
 
   create_table "qaris", force: :cascade do |t|

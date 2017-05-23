@@ -6,6 +6,11 @@ else
 		json.mobile_number @qari.mobile_number
 		json.name @qari.name
 		json.address @qari.address
+		json.dob @qari.dob
+		json.gender @qari.gender
+		json.qualification @qari.qualification
+		json.hourly_rate @qari.hourly_rate
+		json.awards @qari.awards
 		json.latitude @qari.latitude
 		json.longitude @qari.longitude
 		json.token @qari.token

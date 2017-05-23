@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 		post 'signup' => 'qari#signup'
 		post 'signin' => 'qari#signin'
 		put 'dp' => 'qari#upload_image'
+
+		post 'patch' => 'qari#update'
 	end
 
 	post 'event' => 'event#event'

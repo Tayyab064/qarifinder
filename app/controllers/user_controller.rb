@@ -1,6 +1,6 @@
 class UserController < ApplicationController
 	skip_before_action :verify_authenticity_token
-	before_action :restrict_user , only: []
+	before_action :restrict_user , only: [:upload_image]
 
 
 	def signup
@@ -44,15 +44,15 @@ class UserController < ApplicationController
 
 	def nearby_events
 		if params[:latitude].present? && params[:longitude].present?
-			@event = Event.near([params[:latitude], params[:longitude]], 10, :units => :km)
+			@event = Event.where('timing > ?' , Time.now).near([params[:latitude], params[:longitude]], 10, :units => :km)
 		else
-			@event = Event.all
+			@event = Event.where('timing > ?' , Time.now).order(timing: 'ASC')
 		end
 		render status: 200
 	end
 
 	def events
-		@event = Event.all.order(timing: 'DESC')
+		@event = Event.where('timing > ?' , Time.now).order(timing: 'ASC')
 		render status: 200
 	end
 

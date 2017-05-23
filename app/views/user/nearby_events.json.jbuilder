@@ -12,11 +12,5 @@ json.events(@event) do |event|
 	end
 	json.latitude event.latitude
 	json.longitude event.longitude
-	user = event.eventby
-	json.user do
-		json.name user.name
-		json.address user.address
-		json.mobile_number user.mobile_number
-		json.email user.email
-	end
+	
 end

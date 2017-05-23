@@ -8,6 +8,4 @@ class Event < ApplicationRecord
 		end
 	end
 	after_validation :reverse_geocode
-
-	belongs_to :eventby , :polymorphic => true
 end

@@ -1,17 +1,9 @@
 class EventController < ApplicationController
 	skip_before_action :verify_authenticity_token
-	before_action :restrict_all , only: [:event]
+	before_action :restrict_all , only: []
 
 	def event
-		p 'User is'
-		p @user
 		c = Event.new(event_params)
-		if @user.class == 'Qari'
-			c.eventby_type = 'Qari'
-		else
-			c.eventby_type = 'User'
-		end
-		c.eventby_id = @user.id
 		if c.save
 			render json: {'message' => 'Successfully created'} , status: 201
 		else

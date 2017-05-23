@@ -12,5 +12,4 @@ class Qari < ApplicationRecord
 	enum gender: [:male , :female]
 
 	has_many :timeslots , dependent: :destroy
-	has_many :events , as: :eventby , dependent: :destroy
 end

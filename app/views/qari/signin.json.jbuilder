@@ -14,5 +14,9 @@ else
 		else
 			json.image ''
 		end
+		json.timeslot(@qari.timeslots) do |timi|
+			json.timeslot timi.timeslot
+			json.dayslot timi.dayslot
+		end
 	end
 end

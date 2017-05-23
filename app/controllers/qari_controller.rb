@@ -11,6 +11,10 @@ class QariController < ApplicationController
 			qari = Qari.new(signu_params)
 			qari.email = em
 			if qari.save
+				params[:qari][:timeslot].split(',').each do |spl|
+					dis = spl.split('+')
+					Timeslot.create(timeslot: dis[1], dayslot: dis[0], qari_id: qari.id)
+				end
 				render json: {'message' => 'Kindly Signin'} , status: 201
 			else
 				render json: {'message' => 'Something went wrong'} , status: 422

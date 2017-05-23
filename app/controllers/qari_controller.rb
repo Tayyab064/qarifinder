@@ -53,7 +53,7 @@ class QariController < ApplicationController
 		@current_qari.update updat_params
 		params[:qari][:timeslot].split(',').each do |spl|
 			dis = spl.split('+')
-			if dis[2] = '000'
+			if dis[2] == '0000'
 				Timeslot.create(timeslot: dis[1], dayslot: dis[0], qari_id: @current_qari.id)
 			end
 		end

@@ -3,7 +3,7 @@ json.qari do
 	json.mobile_number @current_qari.mobile_number
 	json.name @current_qari.name
 	json.address @current_qari.address
-	json.dob @current_qari.dob
+	json.dob @current_qari.dob.strftime('%d-%m-%Y')
 	json.gender @current_qari.gender
 	json.qualification @current_qari.qualification
 	json.hourly_rate @current_qari.hourly_rate

@@ -20,7 +20,10 @@ else
 			json.image ''
 		end
 		json.timeslot(@qari.timeslots) do |timi|
-			json.timeslot timi.timeslot
+			json.id timi.id
+			c = timi.timeslot.split('to')
+			json.time_start c[0]
+			json.time_end c[1]
 			json.dayslot timi.dayslot
 		end
 	end

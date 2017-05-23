@@ -1,6 +1,6 @@
 class QariController < ApplicationController
 	skip_before_action :verify_authenticity_token
-	before_action :restrict_qari , only: [ :upload_image]
+	before_action :restrict_qari , only: [ :upload_image , :update]
 
 
 	def signup
@@ -49,9 +49,18 @@ class QariController < ApplicationController
 		render json: {'message' => message} , status: sta
 	end
 
+	def update
+		@current_qari.update updat_params
+		render status: 200
+	end
+
 	private
 
 	def signu_params
 		params.require(:qari).permit(:name , :email , :password , :mobile_number , :dob , :gender , :description , :qualification , :latitude , :longitude , :hourly_rate , :awards)
+	end
+
+	def updat_params
+		params.require(:qari).permit(:name , :password , :mobile_number , :dob , :gender , :description , :qualification , :latitude , :longitude , :hourly_rate , :awards)
 	end
 end

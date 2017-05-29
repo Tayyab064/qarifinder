@@ -64,10 +64,10 @@ class QariController < ApplicationController
 	private
 
 	def signu_params
-		params.require(:qari).permit(:name , :email , :password , :mobile_number , :dob , :gender , :description , :qualification , :latitude , :longitude , :hourly_rate , :awards)
+		params.require(:qari).permit(:name , :email , :password , :mobile_number , :dob , :gender , :qualification , :latitude , :longitude , :hourly_rate , :awards , :experience)
 	end
 
 	def updat_params
-		params.require(:qari).permit(:name , :password , :mobile_number , :dob , :gender , :description , :qualification , :latitude , :longitude , :hourly_rate , :awards)
+		params.require(:qari).permit(:name , :password , :mobile_number , :dob , :gender , :qualification , :latitude , :longitude , :hourly_rate , :awards , :experience)
 	end
 end

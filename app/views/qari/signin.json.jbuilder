@@ -11,6 +11,7 @@ else
 		json.qualification @qari.qualification
 		json.hourly_rate @qari.hourly_rate
 		json.awards @qari.awards
+		json.experience @qari.experience
 		json.latitude @qari.latitude
 		json.longitude @qari.longitude
 		json.token @qari.token

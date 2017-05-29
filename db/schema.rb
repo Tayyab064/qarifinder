@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523101245) do
+ActiveRecord::Schema.define(version: 20170529065740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170523101245) do
     t.float    "hourly_rate",          default: 0.0
     t.string   "awards",               default: ""
     t.string   "image"
+    t.string   "experience"
   end
 
   create_table "timeslots", force: :cascade do |t|

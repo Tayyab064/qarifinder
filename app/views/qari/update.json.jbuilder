@@ -8,6 +8,7 @@ json.qari do
 	json.qualification @current_qari.qualification
 	json.hourly_rate @current_qari.hourly_rate
 	json.awards @current_qari.awards
+	json.experience @current_qari.experience
 	json.latitude @current_qari.latitude
 	json.longitude @current_qari.longitude
 	json.token @current_qari.token

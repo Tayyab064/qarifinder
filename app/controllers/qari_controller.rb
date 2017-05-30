@@ -15,6 +15,7 @@ class QariController < ApplicationController
 					dis = spl.split('+')
 					Timeslot.create(timeslot: dis[1], dayslot: dis[0], qari_id: qari.id)
 				end
+				QariMailer.send_email(qari).deliver_now
 				render json: {'message' => 'Kindly Signin'} , status: 201
 			else
 				render json: {'message' => 'Something went wrong'} , status: 422
@@ -59,6 +60,15 @@ class QariController < ApplicationController
 			end
 		end
 		render status: 200
+	end
+
+	def verify_email
+		if qar = Qari.find_by_email_token(params[:token])
+			qar.update(email_token: nil , email_verified: true)
+			redirect_to '/verified.html'
+		else
+			redirect_to '/422.html'
+		end
 	end
 
 	private

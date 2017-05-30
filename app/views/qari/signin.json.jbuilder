@@ -8,6 +8,7 @@ else
 		json.address @qari.address
 		json.dob @qari.dob.strftime('%d-%m-%Y')
 		json.gender @qari.gender
+		json.email_verified @qari.email_verified
 		json.qualification @qari.qualification
 		json.hourly_rate @qari.hourly_rate
 		json.awards @qari.awards

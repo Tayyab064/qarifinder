@@ -21,4 +21,6 @@ Rails.application.routes.draw do
 	post 'event' => 'event#event'
   end
 
+  get 'qari/email/verify/:token' => 'qari#verify_email'
+
 end

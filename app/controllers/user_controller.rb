@@ -35,9 +35,9 @@ class UserController < ApplicationController
 
 	def nearby_qari
 		if params[:latitude].present? && params[:longitude].present?
-			@qari = Qari.near([params[:latitude], params[:longitude]], 10, :units => :km)
+			@qari = Qari.where(email_verified: true).near([params[:latitude], params[:longitude]], 10, :units => :km)
 		else
-			@qari = Qari.all
+			@qari = Qari.where(email_verified: true)
 		end
 		render status: 200
 	end

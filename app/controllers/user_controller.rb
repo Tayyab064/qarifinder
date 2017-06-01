@@ -35,7 +35,7 @@ class UserController < ApplicationController
 
 	def nearby_qari
 		if params[:latitude].present? && params[:longitude].present?
-			@qari = Qari.where(email_verified: true).near([params[:latitude], params[:longitude]], 10, :units => :km)
+			@qari = Qari.where(email_verified: true).near([params[:latitude], params[:longitude]], 5, :units => :km)
 		else
 			@qari = Qari.where(email_verified: true)
 		end
@@ -44,7 +44,7 @@ class UserController < ApplicationController
 
 	def nearby_events
 		if params[:latitude].present? && params[:longitude].present?
-			@event = Event.where('timing > ?' , Time.now).near([params[:latitude], params[:longitude]], 10, :units => :km)
+			@event = Event.where('timing > ?' , Time.now).near([params[:latitude], params[:longitude]], 5, :units => :km)
 		else
 			@event = Event.where('timing > ?' , Time.now).order(timing: 'ASC')
 		end

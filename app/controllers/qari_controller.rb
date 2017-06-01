@@ -6,7 +6,7 @@ class QariController < ApplicationController
 	def signup
 		em = params[:qari][:email].downcase
 		if Qari.exists?(email: em)
-			render json: {'message' => 'Already signedup!'} , status: 409
+			render json: {'message' => 'Already signedup!'} , status: 422
 		else
 			qari = Qari.new(signu_params)
 			qari.email = em
@@ -30,7 +30,7 @@ class QariController < ApplicationController
 				render status: 200
 			else
 				@message = 'Invalid email/password'
-				render status: 409
+				render status: 422
 			end
 		else
 			@message = 'Kindly Signup'

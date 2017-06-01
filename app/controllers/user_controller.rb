@@ -6,7 +6,7 @@ class UserController < ApplicationController
 	def signup
 		em = params[:user][:email].downcase
 		if User.exists?(email: em)
-			render json: {'message' => 'Already signedup!'} , status: 409
+			render json: {'message' => 'Already signedup!'} , status: 422
 		else
 			user = User.new(signu_params)
 			user.email = em
@@ -25,7 +25,7 @@ class UserController < ApplicationController
 				render status: 200
 			else
 				@message = 'Invalid email/password'
-				render status: 409
+				render status: 422
 			end
 		else
 			@message = 'Kindly Signup'

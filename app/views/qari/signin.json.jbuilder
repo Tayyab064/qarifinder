@@ -6,7 +6,11 @@ else
 		json.mobile_number @qari.mobile_number
 		json.name @qari.name
 		json.address @qari.address
-		json.dob @qari.dob.strftime('%d-%m-%Y')
+		if @qari.dob.present?
+			json.dob @qari.dob.strftime('%d-%m-%Y')
+		else
+			json.dob ''
+		end
 		json.gender @qari.gender
 		json.email_verified @qari.email_verified
 		json.qualification @qari.qualification

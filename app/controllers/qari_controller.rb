@@ -72,7 +72,7 @@ class QariController < ApplicationController
 	end
 
 	def forget_password
-		if qar = Qari.find_by_email_token(params[:email])
+		if qar = Qari.find_by_email(params[:email])
 			qar.regenerate_password_reset_token
 			QariMailer.reset_password(qar).deliver_now
 			render json: {'message' => 'Kindly check your email'} , status: 200

@@ -16,11 +16,14 @@ Rails.application.routes.draw do
 		put 'dp' => 'qari#upload_image'
 
 		patch 'update' => 'qari#update'
+		post 'forget_password' => 'qari#forget_password'
 	end
 
 	post 'event' => 'event#event'
   end
 
   get 'qari/email/verify/:token' => 'qari#verify_email'
+  get 'qari/password/reset/:token' => 'qari#reset_password'
+  put 'qari/update_password' => 'qari#update_password_for'
 
 end

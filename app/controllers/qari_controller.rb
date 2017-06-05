@@ -1,6 +1,6 @@
 class QariController < ApplicationController
 	skip_before_action :verify_authenticity_token
-	before_action :restrict_qari , only: [ :upload_image , :update]
+	before_action :restrict_qari , only: [ :upload_image , :update ]
 
 
 	def signup
@@ -68,6 +68,34 @@ class QariController < ApplicationController
 			redirect_to '/verified.html'
 		else
 			redirect_to '/422.html'
+		end
+	end
+
+	def forget_password
+		if qar = Qari.find_by_email_token(params[:email])
+			qar.regenerate_password_reset_token
+			QariMailer.reset_password(qar).deliver_now
+			render json: {'message' => 'Kindly check your email'} , status: 200
+		else
+			render json: {'message' => 'Invalid email address'} , status: 404
+		end
+	end
+
+	def reset_password
+		if token = Qari.find_by_password_reset_token(params[:token])
+			addre = '/reset_password.html?token=' + params[:token]
+			redirect_to addre
+		else
+			render json: {'message' => "Invalid forgot password token"}, status: :unauthorized
+		end
+	end
+
+	def update_password_for
+		if lender = Qari.find_by_password_reset_token(params[:token])
+			lender.update(password: params[:password] , password_reset_token: nil)
+			render json: {'message' => "Successfully Updated"}, status: 200
+		else
+			render json: {'message' => "Invalid forgot password token"}, status: :unauthorized
 		end
 	end
 

@@ -15,7 +15,7 @@ class QariController < ApplicationController
 					dis = spl.split('+')
 					Timeslot.create(timeslot: dis[1], dayslot: dis[0], qari_id: qari.id)
 				end
-				QariMailer.send_email(qari).deliver_later
+				QariMailer.send_email(qari).deliver_now
 				render json: {'message' => 'Kindly Signin'} , status: 201
 			else
 				render json: {'message' => 'Something went wrong'} , status: 422
@@ -74,7 +74,7 @@ class QariController < ApplicationController
 	def forget_password
 		if qar = Qari.find_by_email(params[:email])
 			qar.regenerate_password_reset_token
-			QariMailer.reset_password(qar).deliver_later
+			QariMailer.reset_password(qar).deliver_now
 			render json: {'message' => 'Kindly check your email'} , status: 200
 		else
 			render json: {'message' => 'Invalid email address'} , status: 404
